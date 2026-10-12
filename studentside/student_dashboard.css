@@ -1,0 +1,104 @@
+:root {
+    --background-color: #000;
+    --text: #fff;
+    --sub-text: #b5b5b5;
+    --line: #fff;
+    --radius: 6px;
+    --sidebar-width: 240px;
+    --font: "Inter", Arial, sans-serif;
+    --font-monospace: "Courier New", monospace;
+
+}
+
+/* Need to reset built in stuff to 
+customize the spaccing and structure
+to our liking */
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: var(--background-color);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 14px;
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Page Layout */
+.layout {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px;
+    border-right: 1px solid var(--line);
+}
+
+.sidebar-brand{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 40px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.sidebar-nav{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 8px;
+    border-radius: var(--radius);
+    font-weight: 600;
+}
+
+/* Need settings, profile, and sign out
+set in place */
+
+.sidebar-bottom{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: var(--line);
+
+}
+
+.profile-card{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin:8px 0;
+    padding: 10px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+.profile-text{
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-name{
+    font-weight: 600;
+}
