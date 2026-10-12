@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ResolveIT | Staff Dashboard</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    
+    <div class="dashboard-layout">
+
+        <!-- Staff sidebar navigation -->
+        <aside class="sidebar">
+            
+            <div class="sidebar-header">
+                <h2>ResolveIT</h2>
+                <p>Staff Portal</p>
+            </div>
+
+            <nav class="sidebar-nav" aria-label="Staff navigation">
+                <a href="dashboard" class="nav-link active">Dashboard</a>
+                <a href="#tickets" class="nav-link">Tickets</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <P>UNT IT Support</P>
+            </div>
+
+
+        </aside>
+
+        <!-- Main dashboard content -->
+        <main class="main-content" id="dashboard">
+            <h1>Staff Dashboard</h1>
+            <p>Manage incoming IT support requests.</p>
+
+        <!-- Ticket summary Cards -->
+        <section class="ticket-summary" aria-label="Ticket summary">
+
+            <div class="summary-card">
+                <h3>Open Tickets</h3>
+                <p class="ticket-count" id="open-count">24</p>
+                <span>Awaiting attention</span>
+            </div>
+
+            <div class="summary-card">
+                <h3>Assigned Tickets</h3>
+                <p class="ticket-count" id="assigned-count">12</p>
+                <span>Assigned to staff</span>
+            </div>
+
+            <div class="summary-card">
+                <h3>In progress</h3>
+                <p class="ticket-count" id="progress-count">8</p>
+                <span>Currently being worked on</span>
+            </div>
+
+            <div class="summary-card">
+                <h3>Resolved Tickets</h3>
+                <p class="ticket-count" id="resolved-count">36</p>
+                <span>Successfully resolved</span>
+            </div>
+
+        </section>
+        <!-- Staff Ticket Queue -->
+
+        <section id="tickets" aria-labelledby="tickets-heading">
+            
+            <!-- Ticket Queue Heading -->
+            <div class="ticket-header">
+                <div>
+                    <h2 id="tickets-heading">Ticket Queue</h2>
+                    <p>View and manage incoming support requests.</p>
+                </div>
+            </div>
+
+            <!-- Ticket Search and Filters -->
+            <div class="ticket-controls">
+                 
+                <input
+                    type="search"
+                    id="ticket-search"
+                    placeholder="Search by ticket ID or requester..."
+                    aria-label="search tickets"
+                >
+
+                <select id="status-filter" aria-label="Filter by status">
+                    <option value="all">All Statuses</option>
+                    <option value="Open">Open</option>
+                    <option value="Assigned">Assigned</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Resolved">Resolved</option>
+                </select>
+
+                <select id="priority-filter" aria-label="Filter by priority">
+                    <option value="all">All Priorities</option>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+
+                <select id="category-filter" aria-label="filter by category">
+                    <option value="all">All Categories</option>
+                    <option value="Wi-Fi Connection">Wi-Fi Connection</option>
+                    <option value="Account Access">Account Access</option>
+                    <option value="Software Issue">Software Issue</option>
+                    <option value="Hardware Problem">Hardware Problem</option>
+                    <option value="Email Support">Email Support</option>
+                </select>
+            </div>
+
+
+
+            <div class="table-container">
+                <table class="ticket-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Ticket ID</th>
+                            <th scope="col">Requester</th>
+                            <th scope="col">Issue Category</th>
+                            <th scope="col">Priority</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Date Submitted</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr>
+                            <td>TKT-001</td>
+                            <td>Alex Johnson</td>
+                            <td>Wi-Fi Connection</td>
+                            <td><span class="priority high">High</span></td>
+                            <td><span class="status open">Open</span></td>
+                            <td>Oct 5, 2026</td>
+                        </tr>
+
+                        <tr>
+                            <td>TKT-002</td>
+                            <td>Jordan Smith</td>
+                            <td>Account Access</td>
+                            <td><span class="priority medium">Medium</span></td>
+                            <td><span class="status assigned">Assigned</span></td>
+                            <td>Oct 5, 2026</td>
+                        </tr>
+
+                        <tr>
+                            <td>TKT-003</td>
+                            <td>Taylor Brown</td>
+                            <td>Software Issue</td>
+                            <td><span class="priority low">Low</span></td>
+                            <td><span class="status progress">In Progress</span></td>
+                            <td>Oct 4, 2026</td>
+                        </tr>
+
+                        <tr>
+                            <td>TKT-004</td>
+                            <td>Casey Wilson</td>
+                            <td>Hardware Problem</td>
+                            <td><span class="priority high">High</span></td>
+                            <td><span class="status resolved">Resolved</span></td>
+                            <td>Oct 4, 2026</td>
+                        </tr>
+
+                        <tr>
+                            <td>TKT-005</td>
+                            <td>Morgan Davis</td>
+                            <td>Email Support</td>
+                            <td><span class="priority medium">Medium</span></td>
+                            <td><span class="status open">Open</span></td>
+                            <td>Oct 3, 2026</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+           
+        </main>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
