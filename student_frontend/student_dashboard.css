@@ -207,3 +207,41 @@ set in place */
 .page-header p {
     color: var(--sub-text);
 }
+
+.action-cards {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+
+.action-card{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 32px;
+    border: 1px solid var(--line);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+/* Need to find icons */
+.action-icon{
+    width: 54px;
+    height: 54px;
+    margin-bottom: 24px;
+    background: #3a3b40;
+}
+
+/* This makes the page responsive */
+@media(max-width: 900px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    /* Need to make sidebar collapsable */
+    .sidebar{
+        display: none;
+    }
+
+    .action-cards{
+        grid-template-columns: 1fr;
+    }
+}
