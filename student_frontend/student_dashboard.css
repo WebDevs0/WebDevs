@@ -102,3 +102,108 @@ set in place */
 .profile-name{
     font-weight: 600;
 }
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 40px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.profile-role {
+    font-size: 11px;
+    color: var(--sub-text);
+}
+
+/* Placeholder box for icons */
+.icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+}
+
+/* Main Column */
+.main {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+/* Top Bar */
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    padding: 0 28px;
+    border-bottom: 1px solid var(--line);
+}
+
+.breadcrumb {
+    color: var(--sub-text);
+}
+
+.breadcrumb .current {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.topbar-search {
+    width: 260px;
+    background: transparent;
+    border: none;
+    color: var(--text);
+}
+
+.icon-btn {
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+}
+
+.topbar-user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    font-size: 11px;
+}
+
+/* Page Content */
+.content {
+    padding: 28px;
+}
+
+.page-header {
+    margin-bottom: 28px;
+}
+
+.page-header h1 {
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+
+.page-header p {
+    color: var(--sub-text);
+}

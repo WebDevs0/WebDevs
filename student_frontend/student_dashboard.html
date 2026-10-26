@@ -10,13 +10,19 @@
     <body>
         <div class="layout">
             <aside class="sidebar">
+                <div class="sidebar-brand">
+                        <span class="icon"></span>
+                        <span class="brand-name">ResolveIT</span>
+                    </div>
+                    
                 <nav class="sidebar-nav">
                     <a href="#" class="nav-link active"><span class="icon"></span>Dashboard</a>
                     <a href="#" class="nav-link"><span class="icon"></span>My Tickets</a>
                     <a href="#" class="nav-link"><span class="icon"></span>Knowledge Base</a>
                     <a href="#" class="nav-link"><span class="icon"></span>FAQ</a>
-
                 </nav>
+
+                   
 
                 <div class="sidebar-bottom">
                     <a href="#" class="nav-link active"><span class="icon"></span>Settings</a>
@@ -34,9 +40,47 @@
                 <a href="#" class="nav-link"><span class="icon"></span>Sign Out</a>
             </aside>
 
-            /* Main Column */
+            <!--Main Column-->
 
             <div class="main">
+                <!-- Top Bar--> 
+
+                <header class = "topbar">
+                    <div class = "breadcrumb">
+                        <span>Dashboard</span> / <span>Student Overview</span>
+                    </div>
+
+                    <div class="topbar-right">
+                        <input type="search" class="topbar-search" placeholder="Search tickets or help articles...">
+                        <button class="icon-btn" aria-label="Notifications"></button>
+
+                        <div class="topbar-user">
+                            <span class="avatar" id="topbar-avatar"></span>
+                            <span id="topbar-name">Johnny Apple</span> <!--place holder for when i do js and sam does backend -->
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Page Content-->
+                 <main class="content">
+
+                    <!--Page Heading-->
+                    <section class="page-header">
+                        <div>
+                            <!--First name filled in; need js and backend for this too-->
+                            <h1>Hi, <span id="student-first-name">Johnny</span></h1>
+                            <p>Track and manage your IT support requests.</p>
+                        </div>
+
+
+
+                    </section>
+
+
+                    </div>
+                 </main>
+
+            
             </div>
         </div>
     </body>
