@@ -14,7 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const categoryFilter = document.getElementById("category-filter");
 
     // Get all ticket rows from the table
-    const ticketRows = document.querySelectorAll(".ticket-table tbody tr");
+    function getTicketRows() {
+        return document.querySelectorAll(".ticket-table tbody tr");
+    }
 
     // Function to filter the tickets
     function filterTickets() {
@@ -24,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const selectedPriority = priorityFilter.value;
         const selectedCategory = categoryFilter.value;
 
-        ticketRows.forEach(function (row) {
+        getTicketRows().forEach(function (row) {
 
             // Get ticket information from each column
             const ticketID = row.cells[0].textContent.toLowerCase();
@@ -76,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let progressCount = 0;
         let resolvedCount = 0;
 
-        ticketRows.forEach(function (row) {
+        getTicketRows().forEach(function (row) {
             const status = row.cells[4].textContent.trim();
 
             if (status === "Open") {

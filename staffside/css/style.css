@@ -1,4 +1,9 @@
-/* ResolveIT Staff Dashboard - Base Styles */
+
+/* 
+   ResolveIT Staff Dashboard
+   Sprint 2 - Updated Stylesheet
+
+   /* 1. Global Styles */
 
 * {
     margin: 0;
@@ -8,32 +13,30 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f6fa;
-    color: #333;
-
+    background-color: #f6f5f1;
+    color: #33443b;
 }
 
-/* Main Dashboard Layout */
+/* 2. Main Dashboard Layout */
 
 .dashboard-layout {
     display: flex;
     min-height: 100vh;
-
 }
 
-/* Sidebar */
+/* 3. Sidebar */
 
 .sidebar {
     width: 250px;
-    background-color: #1e293b;
-    color: white;
+    flex-shrink: 0;
+    background-color: #203d37;
+    color: #ffffff;
     display: flex;
     flex-direction: column;
     padding: 25px 20px;
-
 }
 
-/* Sidebar Header */
+/* Sidebar Branding */
 
 .sidebar-header {
     margin-bottom: 40px;
@@ -43,13 +46,17 @@ body {
     font-size: 26px;
     color: #ffffff;
     margin-bottom: 5px;
+}
 
+.brand-accent {
+    color: #e89470;
 }
 
 .sidebar-header p {
-    font-size: 14px;
-    color: #cbd5e1; 
-
+    font-size: 12px;
+    color: #e89470;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 /* Sidebar Navigation */
@@ -58,12 +65,12 @@ body {
     display: flex;
     flex-direction: column;
     gap: 12px;
-
 }
 
 .nav-link {
+    display: block;
     text-decoration: none;
-    color: #cbd5e1;
+    color: #e0e8e3;
     padding: 12px 15px;
     border-radius: 8px;
     font-size: 15px;
@@ -71,16 +78,20 @@ body {
 }
 
 .nav-link:hover {
-    background-color: #334155;
-    color: white;
-    
+    background-color: #34574c;
+    color: #ffffff;
 }
 
 .nav-link.active {
-    background-color: #facc15;
-    color: #1e293b;
+    background-color: #3b6255;
+    color: #ffffff;
     font-weight: bold;
+    border-left: 3px solid #e89470;
+}
 
+.nav-link:focus-visible {
+    outline: 2px solid #e89470;
+    outline-offset: 3px;
 }
 
 /* Sidebar Footer */
@@ -92,64 +103,39 @@ body {
     color: #cbd5e1;
 }
 
-/* Main Content Area */
+/* 4. Main Content */
 
 .main-content {
     flex: 1;
     min-width: 0;
-    padding: 35px;
+    padding: 40px;
+    background-color: #f6f5f1;
 }
 
-.main-content h1 {
-    font-size: 28px;
-    margin-bottom: 10px;
+/* Dashboard Heading */
 
-}
-
-.main-content > p {
-    color: #64748b;
-    margin-bottom: 30px;
-}
-
-/* Basic Ticket Section */
-
-#tickets {
-    background-color: white;
-    padding: 25px;
-    border-radius: 10px;
-    border: 1px solid #e2e8f0;
-}
-
-#tickets h2 {
-    font-size: 20px;
+.main-content .dashboard-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #64756c;
     margin-bottom: 12px;
 }
 
-/* Small Screen Support */
-
-@media (max-width: 700px) {
-    .dashboard-layout {
-        flex-direction: column;
-    }
-
-    .sidebar {
-        width: 100%;
-    }
-
-    .sidebar-header {
-        margin-bottom: 20px;
-    }
-
-    .sidebar-footer {
-        margin-top: 20px;
-    }
-
-    .main-content {
-        padding: 20px;
-    }
+.main-content h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #203d37;
+    margin-bottom: 8px;
 }
 
-/* Ticket Summary Cards */
+.main-content .dashboard-description {
+    font-size: 15px;
+    color: #737b76;
+    margin-bottom: 30px;
+}
+
+/* 5. Ticket Summary Cards */
 
 .ticket-summary {
     display: grid;
@@ -159,47 +145,52 @@ body {
 }
 
 .summary-card {
+    position: relative;
     background-color: #ffffff;
-    font-size: 15px;
-    color: #64748b;
-    font-weight: 600;
-    margin-bottom: 15px;
+    padding: 24px;
+    border: 1px solid #e2e5e1;
+    border-radius: 10px;
+    margin-bottom: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.summary-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
 }
 
 .summary-card h3 {
-    font-size: 15px;
-    color: #64748b;
+    font-size: 14px;
     font-weight: 600;
+    color: #64748b;
     margin-bottom: 15px;
 }
 
 .ticket-count {
-    font-size: 32px;
-    font-weight: bold;
-    color: #1e293b;
-    margin-bottom: 10px;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: #203d37;
+    margin-bottom: 12px;
 }
 
 .summary-card span {
-    font-size: 13px;
+    font-size: 12px;
     color: #64748b;
 }
 
-/* Responsive Ticket Cards */
+/* 6. Ticket Queue */
 
-@media (max-width: 1100px) {
-    .ticket-summary {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+#tickets {
+    background-color: #ffffff;
+    padding: 28px;
+    border-radius: 12px;
+    border: 1px solid #e2e5e1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 
-@media (max-width: 600px) {
-    .ticket-summary {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Ticket Queue Header */
+/* Ticket Queue Heading */
 
 .ticket-header {
     display: flex;
@@ -209,17 +200,51 @@ body {
 }
 
 .ticket-header h2 {
-    font-size: 20px;
-    color: #1e293b;
+    font-size: 21px;
+    color: #203d37;
+    font-weight: 700;
     margin-bottom: 6px;
 }
 
 .ticket-header p {
     font-size: 14px;
-    color: #64748b;
+    color: #737b76;
 }
 
-/* Ticket Table */
+/* 7. Search and Filters */
+
+.ticket-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+#ticket-search {
+    flex: 1;
+    min-width: 220px;
+}
+
+.ticket-controls input,
+.ticket-controls select {
+    padding: 12px 14px;
+    background-color: #ffffff;
+    border: 1px solid #d3dcd6;
+    border-radius: 6px;
+    color: #203d37;
+    font-size: 14px;
+    transition: border-color 0.2s ease;
+}
+
+.ticket-controls input:focus,
+.ticket-controls select:focus {
+    border-color: #3b6255;
+    outline: 2px solid #a8c5b7;
+    outline-offset: 2px;
+}
+
+/* 8. Ticket Table */
 
 .table-container {
     width: 100%;
@@ -233,27 +258,33 @@ body {
 }
 
 .ticket-table th {
-    background-color: #f8fafc;
-    color: #475569;
+    background-color: #f3f5f2;
+    color: #3b5147;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     padding: 15px;
     white-space: nowrap;
-    border-bottom: 1px solid #e2e8f0
+    border-bottom: 1px solid #e2e8f0;
 }
 
 .ticket-table td {
     padding: 16px 15px;
     font-size: 14px;
-    color: #334155;
+    color: #33443b;
     border-bottom: 1px solid #e2e8f0;
 }
 
 .ticket-table tbody tr:hover {
-    background-color: #f8fafc;
+    background-color: #f4f8f5;
 }
 
-/* Priority and Status Badges */
+/* Hide rows that don't match search or filters */
+
+.ticket-table tbody tr[hidden] {
+    display: none;
+}
+
+/* 9. Priority and Status Badges */
 
 .priority,
 .status {
@@ -265,7 +296,7 @@ body {
     white-space: nowrap;
 }
 
-/* Priority colors */
+/* Priority Colors */
 
 .priority.high {
     background-color: #fee2e2;
@@ -282,7 +313,7 @@ body {
     color: #166534;
 }
 
-/* Ticket Status Color */
+/* Ticket Status Colors */
 
 .status.open {
     background-color: #dbeafe;
@@ -304,38 +335,39 @@ body {
     color: #166534;
 }
 
-/* Ticket Search and Filters */
+/* 10. Responsive Design */
 
-.ticket-controls {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 20px;
-    align-items: center;
-}
-
-#ticket-search {
-    flex: 1;
-    min-width: 220px;
-}
-
-.ticket-controls input,
-.ticket-controls select {
-    padding: 11px 14px;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    background-color: white;
-    color: #334155;
-    font-size: 14px;
-}
-
-.ticket-controls input:focus,
-.ticket-controls select:focus {
-    outline: 2px solid #facc15;
-    outline-offset: 2px;
+@media (max-width: 1100px) {
+    .ticket-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 @media (max-width: 700px) {
+    .dashboard-layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .sidebar-header {
+        margin-bottom: 20px;
+    }
+
+    .sidebar-footer {
+        margin-top: 20px;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    #tickets {
+        padding: 16px;
+    }
+
     .ticket-controls {
         flex-direction: column;
         align-items: stretch;
@@ -347,132 +379,8 @@ body {
     }
 }
 
-/* Hide tickets that do not match the filters */
-.ticket-table tbody tr[hidden] {
-    display: none;
-}
-
-/* Dashboard Card Improvements */
-
-.summary-card {
-    position: relative;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    border-top: 4px solid transparent;
-}
-
-.summary-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
-}
-
-/* Open Tickets */
-.summary-card:nth-child(1) {
-    border-top-color: #2563eb;
-}
-
-/* Assigned Tickets */
-.summary-card:nth-child(2) {
-    border-top-color: #d97706;
-}
-
-/* In Progress */
-.summary-card:nth-child(3) {
-    border-top-color: #7c3aed;
-}
-
-/* Resolved Tickets */
-.summary-card:nth-child(4) {
-    border-top-color: #16a34a;
-}
-
-/* Improve ticket count appearance */
-.ticket-count {
-    font-size: 36px;
-    font-weight: 700;
-    letter-spacing: -1px;
-}
-
-/* Improve card headings */
-.summary-card h3 {
-    font-size: 14px;
-    font-weight: 600;
-}
-
-/* Improve card descriptions */
-.summary-card span {
-    font-size: 12px;
-}
-
-/* Step 10B: Dashboard Layout Improvements */
-
-/* Main dashboard spacing */
-.main-content {
-    padding: 40px;
-    background-color: #f5f6fa;
-}
-
-/* Dashboard heading */
-.main-content h1 {
-    font-size: 30px;
-    font-weight: 700;
-    color: #1e293b;
-    margin-bottom: 8px;
-}
-
-/* Dashboard description */
-.main-content > p {
-    font-size: 15px;
-    color: #64748b;
-    margin-bottom: 30px;
-}
-
-/* Ticket queue container */
-#tickets {
-    background-color: #ffffff;
-    padding: 28px;
-    border-radius: 12px;
-    border: 1px solid #e2e8f0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-}
-
-/* Ticket table row spacing */
-.ticket-table td {
-    padding: 18px 15px;
-}
-
-/* Ticket table header */
-.ticket-table th {
-    background-color: #f1f5f9;
-    font-size: 13px;
-    font-weight: 600;
-}
-
-/* Hover effect on ticket rows */
-.ticket-table tbody tr:hover {
-    background-color: #f8fafc;
-}
-
-/*Improve search and filter appearance */
-.ticket-controls input,
-.ticket-controls select {
-    border-radius: 8px;
-    border: 1px solid #cbd5e1;
-    transition: border-color 0.2s ease;
-}
-
-.ticket-controls input:focus,
-.ticket-controls select:focus {
-    border-color: #eab308;
-    outline: 2px solid #fef08a;
-}
-
-/* Responsive layout */
-@media (max-width: 700px) {
-    .main-content {
-        padding: 20px;
-    }
-
-    #tickets {
-        padding: 16px;
+@media (max-width: 600px) {
+    .ticket-summary {
+        grid-template-columns: 1fr;
     }
 }
