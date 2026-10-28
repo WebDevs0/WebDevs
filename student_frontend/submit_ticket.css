@@ -1,0 +1,103 @@
+:root {
+    --card-hover: #1f2024;
+    --icon-box: #3a3b40;
+    --divider: #3a3b40;
+    --error: #ff8a80;
+}
+
+/* Going to need this to override confirmation flex display */
+[hidden] {
+    display: none !important;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect( 0 0 0 0 );
+    white-space: nowrap;
+}
+
+.breadcrumb a:hover {
+    color: var(--text);
+}
+
+.page-header p {
+    color: var(--sub-text);
+}
+
+#ticket-form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Issue type cards */
+
+.issue-type legend {
+    font-weight: 700;
+}
+
+.type-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(24px, 4vw, 32px);
+    margin-top: 16px;
+}
+.type-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px;
+    border: 1px solid var(--line);
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.type-card:hover {
+    background: var(--card-hover);
+    transform: translateY(-4px);
+}
+
+/* Selected card keeps a thick border */
+.type-card:has(input:checked) {
+    background: var(--card-hover);
+    outline: 1px solid var(--line);
+}
+
+/*Users can see which card is focused */
+.type-card:has(input:focus-visible) {
+    outline: 3px solid var(--line);
+    outline-offset: 3px;
+}
+
+/* The radio button is hidden; making the card the click target */
+.type-card input {
+    position: absolute;
+    opacity: 0;
+}
+
+.type-text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.type-title {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.type-desc,
+.hint {
+    color: var(--sub-text)
+}
+

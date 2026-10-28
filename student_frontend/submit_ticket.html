@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> ResolveIT | Student Dashboard</title>
+    <link rel="stylesheet" href="student_dashboard.css">
+    <link rel="stylesheet" href="submit_ticket.css">
+
+</head>
+    <body>
+        <div class="layout">
+            <aside class="sidebar">
+                <div class="sidebar-brand">
+                        <span class="icon"></span>
+                        <span class="brand-name">ResolveIT</span>
+                    </div>
+                    
+                <nav class="sidebar-nav">
+                    <a href="#" class="nav-link active"><span class="icon"></span>Dashboard</a>
+                    <a href="#" class="nav-link"><span class="icon"></span>My Tickets</a>
+                    <a href="#" class="nav-link"><span class="icon"></span>Knowledge Base</a>
+                    <a href="#" class="nav-link"><span class="icon"></span>FAQ</a>
+                </nav>
+
+                   
+
+                <div class="sidebar-bottom">
+                    <a href="#" class="nav-link active"><span class="icon"></span>Settings</a>
+                    <a href="#" class="nav-link active"><span class="icon"></span>Help Center</a>
+
+                    <div class="profile-card">
+                        <span class="profile-initials" id="profile-initials">JA</span>
+                        <div class="profile-text">
+                            <span class="profile-name" id="profile-name">Johnny Apple</span>
+                            <span class="profile-role" id="profile-role">Undergraduate Student</span>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" class="nav-link"><span class="icon"></span>Sign Out</a>
+            </aside>
+
+            <!--Main Column-->
+
+            <div class="main">
+                <!-- Top Bar--> 
+
+                <header class = "topbar">
+                    <div class = "breadcrumb">
+                        <span>Dashboard</span> / <span>Student Overview</span>
+                    </div>
+
+                    <div class="topbar-right">
+                        <input type="search" class="topbar-search" placeholder="Search tickets or help articles...">
+                        <button class="icon-btn" aria-label="Notifications"></button>
+
+                        <div class="topbar-user">
+                            <span class="avatar" id="topbar-avatar"></span>
+                            <span id="topbar-name">Johnny Apple</span> <!--place holder for when i do js and sam does backend -->
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Main Page Content-->
+                 <main class="content">
+
+                    <section class="page-header">
+                        <h1>Open a Ticket</h1>
+                        <p>Start by picking the type of problem</p>
+                    </section>
+
+                    <!--Ticket confirmation-->
+                    <div class="confirmation" id="confirmation" role="status" hidden>
+                        <h2>Ticket Submitted</h2>
+                        <!--strong bolds the text-->
+                        <p>Your ticket number is # <strong id="ticket-number"></strong>. You can check its status in My Tickets.</p>
+                        <a href="student_dashboard.html" class="btn btn-secondary">Back to Dashboard</a>
+                    </div>
+
+                    <form id="ticket-form" novalidate>
+
+                        <!--Type Cards (Physical or General) 
+                        & Make it so only one card can be selcted-->
+                        <fieldset class="issue-type">
+                            <legend class="visualy-hidden">What kind of problem is it?</legend>
+
+
+                            <div class="type-cards">
+                                <label class="type-card">
+                                    <input type="radio" name="issue-type" value="physical">
+                                    <span class="type-icon"></span>
+                                    <span class="type-text">
+                                        <span class="type-title">Physical Issue</span>
+                                        <span class="type-desc">A SCL station in Willis Library, a projector in Sycamore Hall, or a laptop checked out to you</span>
+                                    </span>
+                                </label>
+
+                                <label class="type-card">
+                                    <input type="radio" name="issue-type" value="physical">
+                                    <span class="type-icon"></span>
+                                    <span class="type-text">
+                                        <span class="type-title">General Issue</span>
+                                        <span class="type-desc">Can't log in to myUNT, Canvas won't load, or Wi-Fi keeps dropping</span>
+                                    </span>
+                                </label>
+                                
+                            </div>
+
+                            <!--Hint for students to pick which type card is best fit-->
+
+                            <p class="hint">Software or login problems are General issues, even on a checked out device.</p>
+                        </fieldset>
+
+                    </form>
+                
+                </main>
+            </div>
+        </div>
+    </body>
+</html>
