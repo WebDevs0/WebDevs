@@ -7,6 +7,106 @@ console.log("ResolveIT JavaScript is connected!");
 // Wait until the HTML page is fully loaded
 
 document.addEventListener("DOMContentLoaded", function () {
+//Sprint 2 - Backend API configuration //
+const API_URL = "http://localhost:5001/api/tickets";
+
+// Retrive submitted tickets from Jordan's backend
+async function loadTickets() {
+    console.log("Attempting to load tickets from backend...");
+
+    try {
+        const response = await fetch(API_URL);
+
+        if (!response.ok) {
+            throw new Error("Unable to retrieve tickets");
+        }
+
+        const tickets = await response.json();
+
+        //verifies that the response contains arrays//
+        if (!Array.isArray(tickets)) {
+            throw new Error("Invalid ticket data received");
+        }
+
+        console.log("Tickets retrieved successfully:", tickets);
+        renderTickets(tickets);
+        updateTicketCounts();
+        filterTickets();
+
+    } catch (error) {
+        console.error("Ticket API connection failed:", error);
+        console.log("Keeping sample tickets until backend is ready.");
+
+    }
+
+}
+function renderTickets(tickets) {
+    const tableBody = document.getElementById("ticket-table-body");
+
+    const categoryNames = {
+        account: "Account Access",
+        network: "Wi-Fi Connection",
+        hardware: "Hardware Issue",
+        other: "Other"
+    };
+
+    const statusNames = {
+        open: "Open",
+        in_progress: "In Progress",
+        resolved: "Resolved",
+        closed: "Closed"
+    };
+
+    const rows = document.createDocumentFragment();
+
+    tickets.forEach(function(ticket) {
+        const row = document.createElement("tr");
+
+        const cells = [
+            `TKT-${String(ticket.id).padStart(3, "0")}`,
+            ticket.requester_name,
+            categoryNames[ticket.category] || ticket.category,
+            ticket.priority.charAt(0).toUpperCase() + ticket.priority.slice(1),
+            statusNames[ticket.status] || ticket.status,
+            new Date(ticket.created_at).toLocaleDateString()
+        ];
+
+        cells.forEach(function(value, index) {
+            const cell = document.createElement("td");
+
+            if (index === 3) {
+                const badge = document.createElement("span");
+                badge.className = "priority " + ticket.priority.toLowerCase();
+                badge.textContent = value;
+                cell.appendChild(badge);
+
+            } else if (index === 4) {
+                const badge = document.createElement("span");
+
+                const statusClass = {
+                    open: "open",
+                    assigned: "assigned",
+                    in_progress: "progress",
+                    resolved: "resolved",
+                    closed: "closed",
+                };
+                badge.className = "status " + (statusClass[ticket.status] || "");
+                badge.textContent = value;
+                cell.appendChild(badge);
+            } else {
+                cell.textContent = value;
+            }
+
+
+               
+            row.appendChild(cell);
+        });
+        rows.appendChild(row);
+    });
+    // Replace a sample of tickets only after new rows are prepared //
+    tableBody.replaceChildren(rows);
+
+}
     // Get the search bar and filter dropdowns
     const searchInput = document.getElementById("ticket-search");
     const statusFilter = document.getElementById("status-filter");
@@ -102,5 +202,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Calculate counts when the dashboard loads
     updateTicketCounts();
     console.log("Resolved count:", document.getElementById("resolved-count").textContent);
+
+    loadTickets();
 
 });
