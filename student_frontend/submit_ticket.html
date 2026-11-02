@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResolveIT | Open a Ticket</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="student_dashboard.css">
+    <link rel="stylesheet" href="submit_ticket.css">
+
+</head>
+    <body>
+        <div class="layout">
+            <aside class="sidebar">
+                <div class="sidebar-brand">
+                        <span class="icon"></span>
+                        <span class="brand-name">ResolveIT</span>
+                    </div>
+
+                <nav class="sidebar-nav">
+                    <a href="student_dashboard.html" class="nav-link"><span class="icon"></span>Dashboard</a>
+                    <a href="#" class="nav-link"><span class="icon"></span>My Tickets</a>
+                    <a href="#" class="nav-link"><span class="icon"></span>Knowledge Base</a>
+                    <a href="#" class="nav-link"><span class="icon"></span>FAQ</a>
+                </nav>
+
+
+
+                <div class="sidebar-bottom">
+                    <a href="#" class="nav-link active"><span class="icon"></span>Settings</a>
+                    <a href="#" class="nav-link active"><span class="icon"></span>Help Center</a>
+
+                    <div class="profile-card">
+                        <span class="profile-initials" id="profile-initials">JA</span>
+                        <div class="profile-text">
+                            <span class="profile-name" id="profile-name">Johnny Apple</span>
+                            <span class="profile-role" id="profile-role">Undergraduate Student</span>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" class="nav-link"><span class="icon"></span>Sign Out</a>
+            </aside>
+
+            <!--Main Column-->
+
+            <div class="main">
+                <!-- Top Bar-->
+
+                <header class = "topbar">
+                    <div class = "breadcrumb">
+                        <a href="student_dashboard.html">Dashboard</a> / <span class="current">Open a Ticket</span>
+                    </div>
+
+                    <div class="topbar-right">
+                        <input type="search" class="topbar-search" placeholder="Search tickets or help articles...">
+                        <button class="icon-btn" aria-label="Notifications"></button>
+
+                        <div class="topbar-user">
+                            <span class="avatar" id="topbar-avatar"></span>
+                            <span id="topbar-name">Johnny Apple</span> <!--place holder for when i do js and sam does backend -->
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Main Page Content-->
+                 <main class="content">
+
+                    <section class="page-header">
+                        <h1>Open a Ticket</h1>
+                        <p>Answer a few short questions and we'll send your ticket to the right IT team.</p>
+                    </section>
+
+                    <!--Ticket confirmation (shows after the ticket is saved)-->
+                    <div class="confirmation" id="confirmation" role="status" hidden>
+                        <h2>Ticket Submitted</h2>
+                        <!-- boldens the text-->
+                        <p>Your ticket number is <strong id="ticket-number"></strong>. You can check its status in My Tickets.</p>
+                        <div class="actions">
+                            <a href="student_dashboard.html" class="btn btn-secondary">Back to Dashboard</a>
+                            <button type="button" class="btn btn-primary" id="new-ticket-btn">Open another ticket</button>
+                        </div>
+                    </div>
+
+                    <form id="ticket-form" novalidate>
+
+                        <!--Progress bar-->
+                        <div class="progress">
+                            <p class="progress-label" id="progress-label">Step 1 of 3</p>
+                            <div class="progress-bar" aria-hidden="true">
+                                <span data-bar="1" class="is-done"></span>
+                                <span data-bar="2"></span>
+                                <span data-bar="3"></span>
+                            </div>
+                        </div>
+
+                        <!--Problem type + location -->
+                        <section class="step" id="step-1" aria-labelledby="step-1-heading">
+                            <h2 class="step-heading" id="step-1-heading" tabindex="-1">What kind of problem is it?</h2>
+
+                            <!--Type Cards (Physical or General)
+                            & Make it so only one card can be selcted-->
+                            <fieldset class="issue-type">
+                                <legend class="visually-hidden">What kind of problem is it?</legend>
+
+                                <div class="type-cards">
+                                    <label class="type-card">
+                                        <input type="radio" name="issue-type" value="physical">
+                                        <span class="type-icon"></span>
+                                        <span class="type-text">
+                                            <span class="type-title">Physical Issue</span>
+                                            <span class="type-desc">Campus tech that isn't working right, like a SCL station in Willis Library, a projector in Sycamore Hall, or a laptop checked out to you</span>
+                                        </span>
+                                    </label>
+
+                                    <label class="type-card">
+                                        <input type="radio" name="issue-type" value="general">
+                                        <span class="type-icon"></span>
+                                        <span class="type-text">
+                                            <span class="type-title">General Issue</span>
+                                            <span class="type-desc">Can't log in to myUNT, Canvas won't load, or Wi-Fi keeps dropping</span>
+                                        </span>
+                                    </label>
+                                </div>
+
+                                <!--Hint for students to pick which type card is best fit-->
+                                <p class="hint">Software or login problems are General issues, even on a checked out device.</p>
+                                <p class="error" id="issue-type-error" hidden>Pick Physical Issue or General Issue.</p>
+                            </fieldset>
+
+                            <!--Location only: physical issues-->
+                            <div class="location" id="location" hidden>
+
+                                <p class="section-label">Physical issue: where is it?</p>
+
+                                <fieldset class="where">
+                                    <legend class="visually-hidden">Where is it?</legend>
+                                    <label class="pill">
+                                        <input type="radio" name="where" value="building" checked>
+                                        In a campus building
+                                    </label>
+                                    <label class="pill">
+                                        <input type="radio" name="where" value="device">
+                                        A device checked out to me
+                                    </label>
+                                </fieldset>
+
+                                <!--If in Campus Building-->
+                                <div class="field-row" id="building-fields">
+                                    <div class="field">
+                                        <label for="building">Building (residence halls included)</label>
+
+                                        <!--Search box: matching buildings show in the list below as you type.
+                                            The building names are in submit_ticket.js (BUILDINGS list)-->
+                                        <div class="combo">
+                                            <input type="text" id="building"
+                                                   role="combobox"
+                                                   aria-autocomplete="list"
+                                                   aria-expanded="false"
+                                                   aria-controls="building-options"
+                                                   aria-describedby="building-help"
+                                                   placeholder="Start typing, e.g. Syc"
+                                                   autocomplete="off">
+                                            <ul class="combo-list" id="building-options" role="listbox" aria-label="Buildings" hidden></ul>
+                                        </div>
+
+                                        <p class="field-help" id="building-help">Use the arrow keys or click to pick from the list.</p>
+                                        <p class="error" id="building-error" hidden>Choose a building from the list.</p>
+                                    </div>
+
+                                    <div class="field">
+                                        <label for="room">Room number (if you know it)</label>
+                                        <input type="text" id="room" placeholder="e.g. 250">
+                                    </div>
+                                </div>
+
+                                <!--If a device checked out to me-->
+                                <div class="field-row" id="device-fields" hidden>
+                                    <div class="field">
+                                        <label for="checkout-place">Where did you check it out from?</label>
+                                        <select id="checkout-place">
+                                            <option value="">Choose a location</option>
+                                            <!-- TODO: real offices that lend devices -->
+                                            <option>SPARK (Willis Library)</option>
+                                            <option>SPARK (Discovery Park Library)</option>
+                                            <option>Sycamore Library</option>
+                                        </select>
+                                        <p class="error" id="checkout-place-error" hidden>Choose where you checked out the device.</p>
+                                    </div>
+
+                                    <div class="field">
+                                        <label for="device-tag">Device or tag number (if you know it)</label>
+                                        <input type="text" id="device-tag">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="actions">
+                                <a href="student_dashboard.html" class="btn btn-secondary">Cancel</a>
+                                <button type="button" class="btn btn-primary" id="step-1-continue" data-go="2" hidden>Continue</button>
+                            </div>
+                        </section>
+
+                        <!-- ===================== STEP 2: Category + description ===================== -->
+                        <section class="step" id="step-2" aria-labelledby="step-2-heading" hidden>
+                            <h2 class="step-heading" id="step-2-heading" tabindex="-1">Tell us what's wrong</h2>
+                            <p class="step-intro" id="step-2-intro"></p>
+
+                            <!--General issue categories (handled by UIT)-->
+                            <fieldset class="choices" id="general-categories">
+                                <legend>Category</legend>
+
+                                <label class="choice">
+                                    <input type="radio" name="general-category" value="wifi">
+                                    <span class="choice-text">
+                                        <span class="choice-title">Wi-Fi or internet</span>
+                                        <span class="choice-desc">Can't connect, or the connection keeps dropping</span>
+                                    </span>
+                                </label>
+
+                                <label class="choice">
+                                    <input type="radio" name="general-category" value="account">
+                                    <span class="choice-text">
+                                        <span class="choice-title">Account or login</span>
+                                        <span class="choice-desc">myUNT, Canvas, EUID password, or two-step sign-in</span>
+                                    </span>
+                                </label>
+
+                                <label class="choice">
+                                    <input type="radio" name="general-category" value="software">
+                                    <span class="choice-text">
+                                        <span class="choice-title">Software or apps</span>
+                                        <span class="choice-desc">A program won't install, open, or work right</span>
+                                    </span>
+                                </label>
+
+                                <label class="choice">
+                                    <input type="radio" name="general-category" value="other">
+                                    <span class="choice-text">
+                                        <span class="choice-title">Something else</span>
+                                        <span class="choice-desc">It doesn't fit any of these</span>
+                                    </span>
+                                </label>
+                            </fieldset>
+
+                            <!--Physical issue categories (handled by the IT group for that building or device)-->
+                            <fieldset class="choices" id="physical-categories" hidden>
+                                <legend>Category</legend>
+
+                                <label class="choice">
+                                    <input type="radio" name="physical-category" value="hardware">
+                                    <span class="choice-text">
+                                        <span class="choice-title">Computer, laptop, or classroom tech</span>
+                                        <span class="choice-desc">Lab computer, checked-out laptop, projector, display, or a loose cable</span>
+                                    </span>
+                                </label>
+
+                                <label class="choice">
+                                    <input type="radio" name="physical-category" value="printing">
+                                    <span class="choice-text">
+                                        <span class="choice-title">Printer or print station</span>
+                                        <span class="choice-desc">Won't print, jammed, or out of paper or toner</span>
+                                    </span>
+                                </label>
+
+                                <label class="choice">
+                                    <input type="radio" name="physical-category" value="other">
+                                    <span class="choice-text">
+                                        <span class="choice-title">Something else</span>
+                                        <span class="choice-desc">It doesn't fit any of these</span>
+                                    </span>
+                                </label>
+                            </fieldset>
+
+                            <p class="error" id="category-error" hidden>Choose a category.</p>
+
+                            <div class="field">
+                                <label for="title">Short title</label>
+                                <input type="text" id="title" maxlength="200" placeholder="e.g. Projector won't turn on">
+                                <p class="error" id="title-error" hidden>Add a short title.</p>
+                            </div>
+
+                            <div class="field">
+                                <label for="description">Describe the problem</label>
+                                <textarea id="description" rows="5" placeholder="What happened, and what were you trying to do?"></textarea>
+                                <p class="error" id="description-error" hidden>Describe the problem.</p>
+                            </div>
+
+                            <div class="actions">
+                                <button type="button" class="btn btn-secondary" data-go="1">Back</button>
+                                <button type="button" class="btn btn-primary" data-go="3">Continue</button>
+                            </div>
+                        </section>
+
+                        <!--Check your ticket -->
+                        <section class="step" id="step-3" aria-labelledby="step-3-heading" hidden>
+                            <h2 class="step-heading" id="step-3-heading" tabindex="-1">Check your ticket</h2>
+                            <p class="step-intro">Make sure everything looks right before you send it.</p>
+
+                            <dl class="review">
+                                <dt>Problem type</dt>
+                                <dd id="review-type"></dd>
+
+                                <dt class="review-location">Location</dt>
+                                <dd class="review-location" id="review-location"></dd>
+
+                                <dt>Category</dt>
+                                <dd id="review-category"></dd>
+
+                                <dt>Title</dt>
+                                <dd id="review-title"></dd>
+
+                                <dt>Description</dt>
+                                <dd id="review-description"></dd>
+                            </dl>
+
+                            <!--Shows when the server can't be reached or rejects the ticket-->
+                            <p class="error form-error" id="form-error" role="alert" hidden></p>
+
+                            <div class="actions">
+                                <button type="button" class="btn btn-secondary" data-go="2">Back</button>
+                                <button type="submit" class="btn btn-primary" id="submit-btn">Submit ticket</button>
+                            </div>
+                        </section>
+
+                    </form>
+
+                </main>
+            </div>
+        </div>
+        <script src="submit_ticket.js"></script>
+    </body>
+</html>
