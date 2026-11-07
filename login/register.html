@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResolveIT | Create Account</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+    <a href="login.html" class="logo">ResolveIT</a>
+
+    <main class="auth">
+        <h1>Create an account</h1>
+        <p class="auth-intro">Only my.unt.edu emails can sign up.</p>
+
+        <div class="auth-card">
+            <form id="register-form" novalidate>
+
+                <!--First and last name side by side-->
+                <div class="field-row">
+                    <div class="field">
+                        <label for="firstName">First name</label>
+                        <input type="text" id="firstName" autocomplete="given-name">
+                        <p class="error" id="firstName-error" hidden></p>
+                    </div>
+                    <div class="field">
+                        <label for="lastName">Last name</label>
+                        <input type="text" id="lastName" autocomplete="family-name">
+                        <p class="error" id="lastName-error" hidden></p>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="email">UNT email</label>
+                    <input type="email" id="email" placeholder="euid@my.unt.edu" autocomplete="email">
+                    <p class="error" id="email-error" hidden></p>
+                </div>
+
+                <div class="field">
+                    <label for="confirmEmail">Confirm UNT email</label>
+                    <input type="email" id="confirmEmail" autocomplete="off">
+                    <p class="error" id="confirmEmail-error" hidden></p>
+                </div>
+
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" aria-describedby="password-help" autocomplete="new-password">
+                    <p class="field-help" id="password-help">At least 8 characters.</p>
+                    <p class="error" id="password-error" hidden></p>
+                </div>
+
+                <!--Email already used or server problems show here-->
+                <p class="error form-error" id="form-error" role="alert" hidden></p>
+
+                <button type="submit" class="btn btn-primary" id="submit-btn">Create account</button>
+            </form>
+
+            <hr class="divider">
+
+            <p class="switch">Already have an account? <a href="login.html">Sign in</a></p>
+        </div>
+    </main>
+
+    <script src="login.js"></script>
+</body>
+</html>
