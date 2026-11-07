@@ -1,0 +1,188 @@
+/* Sign in and Create account pages (login.html, register.html), shared by students and staff */
+
+:root {
+    --background-color: #000;
+    --text: #fff;
+    --sub-text: #b5b5b5;
+    --line: #fff;
+    --card-hover: #1f2024;
+    --error: #ff8a80;
+    --font: "Public Sans", Arial, sans-serif;
+}
+
+/* Lets the hidden attribute win over display rules */
+[hidden] {
+    display: none !important;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Logo at the top, form centered below (like the MakeMyMachine login) */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px 48px;
+    background: var(--background-color);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 14px;
+}
+
+a {
+    color: var(--text);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.auth {
+    width: 100%;
+    max-width: 400px;
+    margin-top: clamp(48px, 12vh, 120px);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.auth h1 {
+    font-size: 24px;
+}
+
+.auth-intro {
+    margin-bottom: 16px;
+    color: var(--sub-text);
+}
+
+/* The box around the form */
+.auth-card {
+    padding: 28px;
+    border: 1px solid var(--line);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.field-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.field label {
+    font-weight: 600;
+}
+
+.field input {
+    min-height: 44px;
+    padding: 0 12px;
+    background: var(--background-color);
+    color: var(--text);
+    border: 1px solid var(--line);
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.field input::placeholder {
+    color: var(--sub-text);
+}
+
+.field input:focus-visible {
+    outline: 2px solid var(--line);
+    outline-offset: 2px;
+}
+
+/* Red border on a field that needs fixing */
+.field input[aria-invalid="true"] {
+    border-color: var(--error);
+}
+
+.field-help {
+    font-size: 13px;
+    color: var(--sub-text);
+}
+
+.error {
+    font-size: 13px;
+    color: var(--error);
+}
+
+.form-error {
+    padding: 10px 12px;
+    border: 1px solid var(--error);
+}
+
+/* Same buttons as the ticket page */
+.btn {
+    min-height: 44px;
+    padding: 0 28px;
+    border: 1px solid var(--line);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-primary {
+    background: var(--text);
+    color: var(--background-color);
+}
+
+.btn-primary:hover {
+    background: var(--sub-text);
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+.btn:focus-visible {
+    outline: 2px solid var(--line);
+    outline-offset: 3px;
+}
+
+.divider {
+    margin: 24px 0 16px;
+    border: none;
+    border-top: 1px solid #3a3b40;
+}
+
+.switch {
+    text-align: center;
+    color: var(--sub-text);
+}
+
+.switch a {
+    font-weight: 600;
+}
+
+/* Small screens: names stack */
+@media (max-width: 480px) {
+    .field-row {
+        grid-template-columns: 1fr;
+    }
+
+    .auth-card {
+        padding: 20px;
+    }
+}
