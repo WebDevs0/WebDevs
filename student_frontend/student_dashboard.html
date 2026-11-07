@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> ResolveIT | Student Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="student_dashboard.css">
+
+</head>
+    <body>
+        <div class="layout">
+            <aside class="sidebar">
+                <div class="sidebar-brand">
+                        <span class="icon"></span>
+                        <span class="brand-name">ResolveIT</span>
+                    </div>
+                    
+                <nav class="sidebar-nav">
+                    <a href="student_dashboard.html" class="nav-link active"><span class="icon"></span>Dashboard</a>
+                    <a href="#" class="nav-link"><span class="icon"></span>My Tickets</a>
+                    <a href="#" class="nav-link"><span class="icon"></span>Knowledge Base</a>
+                    <a href="#" class="nav-link"><span class="icon"></span>FAQ</a>
+                </nav>
+
+                   
+
+                <div class="sidebar-bottom">
+                    <a href="#" class="nav-link active"><span class="icon"></span>Settings</a>
+                    <a href="#" class="nav-link active"><span class="icon"></span>Help Center</a>
+
+                    <div class="profile-card">
+                        <span class="profile-initials" id="profile-initials">JA</span>
+                        <div class="profile-text">
+                            <span class="profile-name" id="profile-name">Johnny Apple</span>
+                            <span class="profile-role" id="profile-role">Undergraduate Student</span>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" class="nav-link"><span class="icon"></span>Sign Out</a>
+            </aside>
+
+            <!--Main Column-->
+
+            <div class="main">
+                <!-- Top Bar--> 
+
+                <header class = "topbar">
+                    <div class = "breadcrumb">
+                        <span>Dashboard</span> / <span>Student Overview</span>
+                    </div>
+
+                    <div class="topbar-right">
+                        <input type="search" class="topbar-search" placeholder="Search tickets or help articles...">
+                        <button class="icon-btn" aria-label="Notifications"></button>
+
+                        <div class="topbar-user">
+                            <span class="avatar" id="topbar-avatar"></span>
+                            <span id="topbar-name">Johnny Apple</span> <!--place holder for when i do js and sam does backend -->
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Page Content-->
+                 <main class="content">
+
+                    <!--Page Heading-->
+                    <section class="page-header">
+                        <div>
+                            <!--First name filled in; need js and backend for this too-->
+                            <h1>Hi, <span id="student-first-name">Johnny</span></h1>
+                            <p>Track and manage your IT support requests.</p>
+                        </div>
+                    </section>
+
+                    <section class="action-cards">
+
+                        <a href="submit_ticket.html" class="action-card">
+                            <span class="action-icon"></span>
+                            <h2>Open a Ticket</h2>
+                            <p>Report a new issue or request help from UNTs IT departments</p>
+                        </a>
+
+                        <a href="" class="action-card">
+                            <span class="action-icon"></span>
+                            <h2>My Tickets</h2>
+                            <p>Track the progress of your active requests and view your ticket history</p>                            
+                        </a>
+
+                        <a href="" class="action-card">
+                            <span class="action-icon"></span>
+                            <h2>Knowledge Base</h2>
+                            <p>Browse information and how-to-guides for common campus IT issues </p>                            
+                        </a>
+
+                        <a href="" class="action-card">
+                            <span class="action-icon"></span>
+                            <h2>FAQ</h2>
+                            <p>Find quick answers to frequently asked questions</p>                            
+                        </a>
+
+
+                    </section>
+
+                 </main>
+
+            
+            </div>
+        </div>
+    </body>
+</html>
