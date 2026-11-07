@@ -2,18 +2,18 @@
 
 ## Authors And Individual Roles
 
-- **Joshua McNealy:** Frontend (student side and sign in pages)
-- **Samuel Afon:** Backend
-- **Darold Amanor:** [Role]
-- **Jordan Bussa:** [Role]
+- **Joshua McNealy:** Frontend Developer/UI Designer for Student Side; Scrum Leader
+- **Samuel Afon:** Backend/Database Developer for Staff Side; Documentation
+- **Darold Amanor:** Frontend/UI Designer for Staff Side
+- **Jordan Bussa:** Backend/Database Developer for Student Side
 
 ## Course Information WebDevs
 
-- **Course:** [Course number]
-- **Section:** [Section]
+- **Course:** CSCE 4905
+- **Section:** Section 001
 - **Semester:** Fall 2026
-- **SCRUM Meeting Times:** [Days and times]
-- **Trello Board:** [Trello link]
+- **SCRUM Meeting Times:** MON 1:50 PM - 2:05 PM & WED 6:30 PM - 6:45 PM
+- **Trello Board:** https://trello.com/invite/b/6aa1b7ca4a5962c96f11066e/ATTI33bb527354e13a5ca3a0bce35cd4e99144E41091/webdevs-trello
 
 ## Overview
 
