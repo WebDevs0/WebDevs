@@ -1,5 +1,6 @@
 // Validates signup and login input 
 const UNT_EMAIL = /^[a-z0-9._%+-]+@my\.unt\.edu$/i;
+const NAME = /^[A-Za-z][A-Za-z' -]{0,49}$/;
 
 function clean(value) {
   return typeof value === "string" ? value.trim() : "";
