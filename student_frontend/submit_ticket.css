@@ -1,0 +1,486 @@
+:root {
+    --card-hover: #1f2024;
+    --icon-box: #3a3b40;
+    --divider: #3a3b40;
+    --error: #ff8a80;
+    --font: "Public Sans", Arial, sans-serif;
+}
+
+/* Going to need this to override confirmation flex display */
+[hidden] {
+    display: none !important;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect( 0 0 0 0 );
+    white-space: nowrap;
+}
+
+.breadcrumb a:hover {
+    color: var(--text);
+}
+
+.page-header p {
+    color: var(--sub-text);
+}
+
+#ticket-form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Progress (Step X of 3) */
+.progress {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 760px;
+}
+
+.progress-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sub-text);
+}
+
+.progress-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+}
+
+.progress-bar span {
+    height: 4px;
+    background: var(--divider);
+}
+
+.progress-bar span.is-done {
+    background: var(--text);
+}
+
+
+/* Steps */
+.step {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.step-heading {
+    font-size: 24px;
+}
+
+/* Heading gets focus when a step opens; no outline needed on it */
+.step-heading:focus {
+    outline: none;
+}
+
+.step-intro {
+    margin-top: -16px;
+    color: var(--sub-text);
+}
+
+/* Back / Continue buttons */
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    max-width: 760px;
+}
+
+
+/* Issue type cards */
+
+/* Space between the cards and the hint line */
+.issue-type {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.issue-type legend {
+    font-weight: 700;
+}
+
+.type-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(24px, 4vw, 32px);
+    margin-top: 16px;
+}
+.type-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px;
+    border: 1px solid var(--line);
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.type-card:hover {
+    background: var(--card-hover);
+    transform: translateY(-4px);
+}
+
+/* Selected card keeps a thick border */
+.type-card:has(input:checked) {
+    background: var(--card-hover);
+    outline: 1px solid var(--line);
+}
+
+/*Users can see which card is focused */
+.type-card:has(input:focus-visible) {
+    outline: 3px solid var(--line);
+    outline-offset: 3px;
+}
+
+/* The radio button is hidden; making the card the click target */
+.type-card input {
+    position: absolute;
+    opacity: 0;
+}
+
+/* Gray icon squares in the cards */
+.type-icon {
+    flex: none;
+    width: 54px;
+    height: 54px;
+    background: var(--icon-box);
+}
+
+.type-text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.type-title {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.type-desc,
+.hint {
+    color: var(--sub-text)
+}
+
+/* Form Field */
+.ticket-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    max-width: 640px;
+    padding-top: 28px;
+    border-top: 1px solid var(--divider)
+}
+
+.section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sub-text);
+}
+
+.location {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    max-width: 760px;
+    padding-top: 28px;
+    border-top: 1px solid var(--divider);
+}
+
+/* Building / checked-out device */
+.where {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: 0 18px;
+    border: 1px solid var(--line);
+    font-weight: 600;
+    cursor: pointer;
+
+}
+
+.pill:has(input:checked) {
+    background: var(--card-hover);
+    outline: 1px solid var(--line);
+}
+
+.pill input {
+    accent-color: var(--text);
+}
+
+/* Two fields side by side */
+.field-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 760px;
+}
+
+.field label {
+    font-weight: 600;
+}
+
+.field input,
+.field select,
+.field textarea {
+    min-height: 44px;
+    padding: 0 12px;
+    background: var(--background-color);
+    color: var(--text);
+    border: 1px solid var(--line);
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.field textarea {
+    padding: 12px;
+    resize: vertical;
+}
+
+.field input:focus-visible,
+.field select:focus-visible,
+.field textarea:focus-visible {
+    outline: 2px solid var(--line);
+    outline-offset: 2px;
+}
+
+.field [aria-invalid="true"] {
+    border-color: var(--error);
+}
+
+.field-help {
+    font-size: 13px;
+    color: var(--sub-text);
+}
+
+.error {
+    color: var(--error);
+    font-size: 13px;
+}
+
+
+/* Building search box and its list */
+.combo {
+    position: relative;
+}
+
+.combo input {
+    width: 100%;
+}
+
+/* List opens right below the box */
+.combo-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    max-height: 260px;
+    overflow-y: auto;
+    margin: 4px 0 0;
+    padding: 4px 0;
+    list-style: none;
+    background: var(--background-color);
+    border: 1px solid var(--line);
+}
+
+.combo-option {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 12px;
+    cursor: pointer;
+}
+
+/* Highlighted with the mouse or arrow keys */
+.combo-option:hover,
+.combo-option.is-active {
+    background: var(--card-hover);
+    outline: 1px solid var(--line);
+    outline-offset: -1px;
+}
+
+.combo-group {
+    flex: none;
+    font-size: 12px;
+    color: var(--sub-text);
+}
+
+.combo-empty {
+    padding: 10px 12px;
+    color: var(--sub-text);
+}
+
+
+/* Category choices (step 2) */
+.choices {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 760px;
+}
+
+/* padding instead of margin: margins on a legend don't push content down */
+.choices legend {
+    padding-bottom: 12px;
+    font-weight: 600;
+}
+
+.choice {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 18px;
+    border: 1px solid var(--line);
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.choice:hover,
+.choice:has(input:checked) {
+    background: var(--card-hover);
+}
+
+.choice:has(input:checked) {
+    outline: 1px solid var(--line);
+}
+
+.choice input {
+    margin-top: 3px;
+    accent-color: var(--text);
+}
+
+.choice-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.choice-title {
+    font-weight: 600;
+}
+
+.choice-desc {
+    font-size: 13px;
+    color: var(--sub-text);
+}
+
+
+/* Check your ticket (step 3) */
+.review {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 14px 24px;
+    max-width: 760px;
+    padding: 24px;
+    border: 1px solid var(--line);
+}
+
+.review dt {
+    color: var(--sub-text);
+}
+
+.review dd {
+    margin: 0;
+    font-weight: 600;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+}
+
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 28px;
+    border: 1px solid var(--line);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--text);
+    color: var(--background-color);
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text);
+}
+
+.btn:focus-visible {
+    outline: 2px solid var(--line);
+    outline-offset: 3px;
+}
+
+
+/* Confirmation */
+.confirmation {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 760px;
+    padding: 24px;
+    border: 1px solid var(--line);
+    background: var(--card-hover);
+}
+
+.confirmation h2:focus {
+    outline: none;
+}
+
+.confirmation p {
+    color: var(--sub-text);
+}
+
+
+/* Small screens */
+@media (max-width: 900px) {
+    .type-cards,
+    .field-row,
+    .review {
+        grid-template-columns: 1fr;
+    }
+}
