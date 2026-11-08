@@ -111,7 +111,7 @@
                     <option value="Wi-Fi Connection">Wi-Fi Connection</option>
                     <option value="Account Access">Account Access</option>
                     <option value="Software Issue">Software Issue</option>
-                    <option value="Hardware Problem">Hardware Problem</option>
+                    <option value="Hardware Issue">Hardware Issue</option>
                     <option value="Email Support">Email Support</option>
                 </select>
             </div>
@@ -128,6 +128,7 @@
                             <th scope="col">Priority</th>
                             <th scope="col">Status</th>
                             <th scope="col">Date Submitted</th>
+                            <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     
@@ -183,6 +184,33 @@
            
         </main>
     </div>
+
+    <!-- Ticket Details Popup -->
+    <dialog id="ticket-details-dialog" aria-labelledby="ticket-details-heading">
+        <div class="ticket-details-content">
+            <div class="ticket-details-header">
+                <h2 id="ticket-details-heading">Ticket Details</h2>
+                <button type="button" id="close-ticket-details" aria-label="Close ticket details">
+                    &times;
+
+                </button>
+            </div>
+
+            <h3 id="detail-title"></h3>
+
+            <p><strong>Ticket ID:</strong> <span id="detail-id"></span></p>
+            <p><strong>Requester:</strong> <span id="detail-requester"></span></p>
+            <p><strong>Email:</strong> <span id="detail-email"></span></p>
+            <p><strong>Category:</strong> <span id="detail-category"></span></p>
+            <p><strong>Priority:</strong> <span id="detail-priority"></span></p>
+            <p><strong>Status:</strong> <span id="detail-status"></span></p>
+            <p><strong>Date Submitted:</strong> <span id="detail-date"></span></p>
+
+            <h4>Issue Description</h4>
+            <p id="detail-description"></p>
+
+        </div>
+    </dialog>
 
     <script src="js/script.js"></script>
 </body>

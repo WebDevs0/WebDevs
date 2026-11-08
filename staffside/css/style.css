@@ -384,3 +384,92 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* Sprint 3 - Ticket Details Popup */
+
+.view-details-btn {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.view-details-btn:hover {
+    background-color: #14ded8;
+}
+
+.view-detials-btn-focus-visible,
+#close-details-btn:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 2px;
+}
+
+#ticket-details-dialog {
+    width: min(90%, 550px);
+    max-height: 85vh;
+    overflow-y: auto;
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    color: #1e293b;
+}
+
+#ticket-details-dialog::backdrop {
+    background-color: rgba(15, 23, 42, 0.65);
+}
+
+.ticket-details-content {
+    padding: 28px;
+}
+
+.ticket-details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 12px;
+}
+
+.ticket-details-header h2 {
+    margin: 0;
+    font-size: 22px;
+}
+
+#close-ticket-details {
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #64748b;
+}
+
+#detail-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #1e293b;
+}
+
+.ticket-details-content p {
+    margin-bottom: 12px 0;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.ticket-details-content h4 {
+    margin-top: 24px;
+    margin-bottom: 10px;
+}
+
+#detail-description {
+    background-color: #f2f5f9;
+    padding: 16px;
+    border-radius: 8px;
+    white-space: pre-wrap;
+}

@@ -101,12 +101,64 @@ function renderTickets(tickets) {
                
             row.appendChild(cell);
         });
+
+        // Adds a button to view the complete ticket
+        const actionCell = document.createElement("td");
+        const detailsButton = document.createElement("button");
+
+        detailsButton.type = "button";
+        detailsButton.className = "view-details-button";
+        detailsButton.textContent = "View Details";
+
+        detailsButton.addEventListener("click", function() {
+            showTicketDetials(ticket);
+        });
+
+        actionCell.appendChild(detailsButton);
+        row.appendChild(actionCell);
         rows.appendChild(row);
     });
     // Replace a sample of tickets only after new rows are prepared //
     tableBody.replaceChildren(rows);
 
 }
+
+// Sprint 3 - display complete ticket information
+function showTicketDetials(ticket) {
+    const categoryNames = {
+        account: "Account Access",
+        network: "Wi-Fi Connection",
+        hardware: "Hardware Issue",
+        software: "Software Issue",
+        email: "Email Issue",
+        other: "Other"
+    };
+
+    const statusNames = {
+        open: "Open",
+        assigned: "Assigned",
+        in_progress: "In Progress",
+        resolved: "Resolved",
+        closed: "Closed"
+    };
+
+    const ticketId = `TKT-${String(ticket.id).padStart(3, "0")}`;
+
+    document.getElementById("detail-id").textContent = ticketId;
+    document.getElementById("detail-title").textContent = ticket.title || "Untitled Ticket";
+    document.getElementById("detail-requester").textContent = ticket.requester_name || "Unknown";
+    document.getElementById("detail-category").textContent = categoryNames[ticket.category] || ticket.category || "Other";
+    document.getElementById("detail-priority").textContent = ticket.priority || "Not specified";
+    document.getElementById("detail-status").textContent = statusNames[ticket.status] || ticket.status || "Unknown";
+    document.getElementById("detail-email").textContent = ticket.requester_email || "Unknown";
+    document.getElementById("detail-date").textContent = ticket.created_at ? new Date(ticket.created_at).toLocaleDateString() : "Unknown";
+    document.getElementById("detail-description").textContent = ticket.description || "No description provided.";
+    document.getElementById("ticket-details-dialog").showModal();
+}
+// Close ticket details popup
+document.getElementById("close-ticket-details").addEventListener("click", function() {
+    document.getElementById("ticket-details-dialog").close();
+});
     // Get the search bar and filter dropdowns
     const searchInput = document.getElementById("ticket-search");
     const statusFilter = document.getElementById("status-filter");
