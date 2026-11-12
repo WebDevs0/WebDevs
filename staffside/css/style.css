@@ -473,3 +473,44 @@ body {
     border-radius: 8px;
     white-space: pre-wrap;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
+#tickets {
+    scroll-margin-top: 24px;
+}
+
+.sidebar-nav .nav-link.acitve {
+    background-color: #334155;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* Sprint 3 interactive summary cards */
+
+button.summary-card {
+    font-family: inherit;
+    text-align: left;
+    color: inherit;
+    cursor: pointer;
+    width: 100%;
+}
+
+button.summary-card:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    button.summary-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+}

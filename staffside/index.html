@@ -44,30 +44,29 @@
         <!-- Ticket summary Cards -->
         <section class="ticket-summary" aria-label="Ticket summary">
 
-            <div class="summary-card">
+            <button type="button" class="summary-card" data-status="Open">
                 <h3>Open Tickets</h3>
                 <p class="ticket-count" id="open-count">24</p>
                 <span>Awaiting attention</span>
-            </div>
+            </button>
 
-            <div class="summary-card">
+            <button type="button" class="summary-card" data-status="Assigned">
                 <h3>Assigned Tickets</h3>
                 <p class="ticket-count" id="assigned-count">12</p>
                 <span>Assigned to staff</span>
-            </div>
+            </button>
 
-            <div class="summary-card">
-                <h3>In progress</h3>
+            <button type="button" class="summary-card" data-status="In Progress">
+                <h3>In Progress</h3>
                 <p class="ticket-count" id="progress-count">8</p>
                 <span>Currently being worked on</span>
-            </div>
+            </button>
 
-            <div class="summary-card">
-                <h3>Resolved Tickets</h3>
+            <button type="button" class="summary-card" data-status="Resolved">
+                <h3>Resolved Ticket</h3>
                 <p class="ticket-count" id="resolved-count">36</p>
                 <span>Successfully resolved</span>
-            </div>
-
+            </button>
         </section>
         <!-- Staff Ticket Queue -->
 

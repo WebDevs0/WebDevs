@@ -7,6 +7,26 @@ console.log("ResolveIT JavaScript is connected!");
 // Wait until the HTML page is fully loaded
 
 document.addEventListener("DOMContentLoaded", function () {
+const sidebarLinks = document.querySelectorAll(".sidebar-nav .nav-link");
+
+function updateActiveNavigation() {
+    const currentSection = window.location.hash || "#dashboard";
+
+    sidebarLinks.forEach(function (link) {
+        const isActive = link.getAttribute("href") === currentSection;
+
+        link.classList.toggle("active", isActive);
+
+        if (isActive) {
+            link.setAttribute("aria-current", "location");
+        } else {
+            link.removeAttribute("aria-current");
+        }
+    });
+}
+
+window.addEventListener("hashchange", updateActiveNavigation);
+updateActiveNavigation();
 //Sprint 2 - Backend API configuration //
 const API_URL = "http://localhost:5001/api/tickets";
 
@@ -165,6 +185,30 @@ document.getElementById("close-ticket-details").addEventListener("click", functi
     const priorityFilter = document.getElementById("priority-filter");
     const categoryFilter = document.getElementById("category-filter");
 
+    const summaryCards = document.querySelectorAll(".ticket-summary .summary-card");
+
+    summaryCards.forEach(function (card) {
+        card.addEventListener("click", function() {
+            const selectedStatus = card.dataset.status;
+
+            statusFilter.value = selectedStatus;
+
+            searchInput.value = "";
+            priorityFilter.value = "all";
+            categoryFilter.value = "all";
+
+            filterTickets();
+
+            window.location.hash = "#tickets";
+            updateActiveNavigation();
+
+            document.getElementById("tickets").scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        });
+    });
+
     // Get all ticket rows from the table
     function getTicketRows() {
         return document.querySelectorAll(".ticket-table tbody tr");
@@ -177,6 +221,7 @@ document.getElementById("close-ticket-details").addEventListener("click", functi
         const selectedStatus = statusFilter.value;
         const selectedPriority = priorityFilter.value;
         const selectedCategory = categoryFilter.value;
+
 
         getTicketRows().forEach(function (row) {
 
